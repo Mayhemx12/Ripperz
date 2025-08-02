@@ -6,16 +6,37 @@
   <title>RIPPERZ Store</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-  <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
   <style>
-    body {
-      background-color: #111;
-      color: #F1F1F1;
-      font-family: 'Rajdhani', sans-serif;
+    body, html {
       margin: 0;
       padding: 0;
+      height: 100%;
+      font-family: 'Rajdhani', sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      opacity: 0.8;
+      z-index: -2;
     }
 
     header {
@@ -24,6 +45,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;
+      z-index: 1;
     }
 
     header h1 {
@@ -37,6 +60,8 @@
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2rem;
       padding: 2rem;
+      position: relative;
+      z-index: 1;
     }
 
     .product {
@@ -88,6 +113,12 @@
   </style>
 </head>
 <body>
+  <video id="bg-video" src="/videos/ripperz_title.mp4" autoplay muted loop></video>
+  <script>
+    const bgVideo = document.getElementById('bg-video');
+    bgVideo.playbackRate = 0.5;
+  </script>
+
   <header>
     <h1>RIPPERZ STORE</h1>
   </header>
