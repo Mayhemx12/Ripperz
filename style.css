@@ -354,3 +354,59 @@ footer {
 .tile h3.visible {
   animation: fadeSlideUp 0.8s ease forwards;
 }
+
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--bone-white);
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  nav {
+    display: none;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+  }
+
+  nav.active {
+    display: flex;
+  }
+
+  nav a {
+    margin: 0.75rem 0;
+    font-size: 1.25rem;
+  }
+}
+header.shrink {
+  padding: 0.5rem 1.5rem;
+  background-color: rgba(0, 0, 0, 0.95);
+  transition: padding 0.3s ease;
+}
+
+header h1.shrink {
+  font-size: 2rem;
+}
+// Shrink header on scroll
+const header = document.querySelector("header");
+const headerTitle = header.querySelector("h1");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 60) {
+    header.classList.add("shrink");
+    headerTitle.classList.add("shrink");
+  } else {
+    header.classList.remove("shrink");
+    headerTitle.classList.remove("shrink");
+  }
+});
