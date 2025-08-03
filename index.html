@@ -203,13 +203,7 @@
 
     if (storeVideo) {
       storeVideo.playbackRate = 0.5;
-
-      // Wait until video is ready to seek, then jump to 1s
-      storeVideo.addEventListener('loadedmetadata', () => {
-        storeVideo.currentTime = 1;
-      });
     }
-
     if (logoVid) {
       logoVid.playbackRate = 0.5;
     }
@@ -223,13 +217,6 @@
 </section>
   
   <section class="parallax-section">
-    <video src='/videos/ripperz_title_logo.mp4' autoplay muted loop></video>
-        <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const logoVid = document.getElementById('logoVideo');
-        if (logoVid) logoVid.playbackRate = 0.5;
-      });
-    </script>
     <div class="parallax-overlay">
       <div class="tile">
         <img src="/images/placeholder1.jpg" alt="Feature 1">
