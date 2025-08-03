@@ -227,7 +227,19 @@ footer {
 .tile:nth-child(even) {
   flex-direction: row-reverse;
 }
-
+.tile h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.5rem;
+  color: var(--toxic-green);
+  text-shadow: 0 0 8px var(--toxic-green), 0 0 12px black;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  text-shadow:
+  0 0 8px var(--toxic-green),
+  0 0 16px var(--electric-purple),
+  0 0 20px black;
+}
 .tile-video {
   width: 50%;
   height: 100%;
