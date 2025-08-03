@@ -201,17 +201,43 @@ footer {
   text-shadow: 1px 1px 5px black;
 }
 
+.tile {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  background-color: rgba(17, 17, 17, 0.8);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.tile:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
 .tile-video {
   width: 50%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
   max-height: 300px;
-  border-radius: 0;
-  transition: opacity 0.8s ease, transform 0.8s ease;
-  opacity: 1;
-  transform: scale(1);
   display: block;
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
+
+.tile-video.inactive {
+  opacity: 0.4;
+  transform: scale(0.95);
+}
+
+.tile .content {
+  width: 50%;
+  padding: 2rem;
+  color: var(--bone-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 
 .tile-video.inactive {
   opacity: 0.4;
