@@ -125,11 +125,14 @@
 <body>
   <header>
     <h1>RIPPERZ</h1>
-    <nav>
-      <a href="#">Home</a>
-      <a href="store.html">Shop</a>
-      <a href="#about">About</a>
-    </nav>
+    <div class="hamburger" id="hamburger">
+  ☰
+</div>
+<nav id="navMenu">
+  <a href="#">Home</a>
+  <a href="store.html">Shop</a>
+  <a href="#about">About</a>
+</nav>
   </header>
 
   <section class="hero">
@@ -150,14 +153,12 @@
     // Playback rate controls
     const storeVideo = document.querySelector(".store-bg");
     const logoVid = document.querySelector("#logoVideo");
-
     if (storeVideo) {
       storeVideo.playbackRate = 0.5;
       storeVideo.addEventListener("loadedmetadata", () => {
         storeVideo.currentTime = 1; // Start 1 second in
       });
     }
-
     if (logoVid) {
       logoVid.playbackRate = 0.5;
     }
@@ -167,7 +168,17 @@
       video.addEventListener("mouseenter", () => video.pause());
       video.addEventListener("mouseleave", () => video.play());
     });
-    
+
+    // Hamburger toggle
+const hamburger = document.getElementById("hamburger");
+const navMenu = document.getElementById("navMenu");
+
+if (hamburger && navMenu) {
+  hamburger.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+  });
+}
+
 // Animate h3s on scroll
 const headingObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
