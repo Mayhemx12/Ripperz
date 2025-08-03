@@ -167,7 +167,19 @@
       video.addEventListener("mouseenter", () => video.pause());
       video.addEventListener("mouseleave", () => video.play());
     });
+    
+// Animate h3s on scroll
+const headingObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+    }
+  });
+}, { threshold: 0.5 });
 
+document.querySelectorAll(".tile h3").forEach(h3 => {
+  headingObserver.observe(h3);
+});
     // Scroll fade + scale effect
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
