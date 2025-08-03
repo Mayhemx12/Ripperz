@@ -198,17 +198,46 @@
   </video>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
+    // Playback rate controls
     const storeVideo = document.querySelector(".store-bg");
     const logoVid = document.querySelector("#logoVideo");
 
     if (storeVideo) {
       storeVideo.playbackRate = 0.5;
+      storeVideo.addEventListener("loadedmetadata", () => {
+        storeVideo.currentTime = 1; // Start 1 second in
+      });
     }
+
     if (logoVid) {
       logoVid.playbackRate = 0.5;
     }
+
+    // Pause tile videos on hover
+    document.querySelectorAll(".tile-video").forEach(video => {
+      video.addEventListener("mouseenter", () => video.pause());
+      video.addEventListener("mouseleave", () => video.play());
+    });
+
+    // Scroll fade + scale effect
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove("inactive");
+        } else {
+          entry.target.classList.add("inactive");
+        }
+      });
+    }, {
+      threshold: 0.6
+    });
+
+    document.querySelectorAll(".tile-video").forEach(video => {
+      observer.observe(video);
+    });
   });
 </script>
+
   
   <div class="store-overlay">
     <h1>🔥 Welcome to the Ripperz Store 🔥</h1>
