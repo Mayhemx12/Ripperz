@@ -201,3 +201,18 @@ footer {
   text-shadow: 1px 1px 5px black;
 }
 
+.tile-video {
+  width: 50%;
+  height: auto;
+  object-fit: cover;
+  max-height: 300px;
+  border-radius: 0;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.tile-video.inactive {
+  opacity: 0.4;
+  transform: scale(0.95);
+}
