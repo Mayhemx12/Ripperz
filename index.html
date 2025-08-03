@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RIPPERZ | Bold Streetwear</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Favicon Icons -->
+<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.png">
   <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
       --electric-purple: #7A00FF;
@@ -18,11 +22,17 @@
       --slate-gray: #2E2E2E;
     }
 
-    body {
+    * {
       margin: 0;
-      font-family: 'Rajdhani', sans-serif;
-      color: var(--bone-white);
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       background-color: var(--pitch-black);
+      color: var(--bone-white);
+      font-family: 'Rajdhani', sans-serif;
+      overflow-x: hidden;
     }
 
     header {
@@ -33,7 +43,7 @@
       align-items: center;
       position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: 999;
     }
 
     header h1 {
@@ -56,7 +66,7 @@
 
     .hero {
       position: relative;
-      height: 40vh;
+      height: 20vh;
       overflow: hidden;
     }
 
@@ -65,7 +75,8 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
+      height: auto;
+      min-height: 100%;
       object-fit: cover;
       z-index: -1;
     }
@@ -87,77 +98,41 @@
     .hero h2 {
       font-size: 2.5rem;
       font-family: 'Bebas Neue', sans-serif;
+      color: var(--bone-white);
       text-shadow: 0 0 12px var(--electric-purple);
     }
 
-    .parallax-section {
-      position: relative;
-      z-index: 0;
+    .hero p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+      color: var(--bone-white);
     }
 
-    .parallax-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: -2;
-      opacity: 0.2;
-    }
-
-    .parallax-overlay {
-      position: relative;
-      padding: 4rem 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 3rem;
-    }
-
-    .tile {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      background-color: rgba(17, 17, 17, 0.85);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .tile:nth-child(even) {
-      flex-direction: row-reverse;
-    }
-
-    .tile img,
-    .tile video {
-      width: 50%;
-      height: auto;
-      object-fit: cover;
-    }
-
-    .tile .content {
+    main {
       padding: 2rem;
-      width: 50%;
+      background-color: var(--slate-gray);
     }
 
-    .tile h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2rem;
-      color: var(--toxic-green);
-    }
-
-    .tile p {
-      font-size: 1rem;
+    footer {
+      background: #000;
+      padding: 1rem;
+      text-align: center;
+      color: #aaa;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
   <header>
     <h1>RIPPERZ</h1>
-    <nav>
-      <a href="/index.html">Home</a>
-      <a href="/store.html">Store</a>
-      <a href="#about">About</a>
-    </nav>
+    <div class="hamburger" id="hamburger">
+  ☰
+</div>
+<nav id="navMenu">
+  <a href="#">Home</a>
+  <a href="store.html">Shop</a>
+  <a href="#about">About</a>
+</nav>
   </header>
 
   <section class="hero">
@@ -168,8 +143,80 @@
     </div>
   </section>
 
-  <section class="parallax-section">
-    <video id="skaterVideo" class="parallax-video" src="/videos/skater_brags_on_ripperz.mp4" autoplay muted loop></video>
+<section class="store-hero">
+  <video class="store-bg" autoplay muted loop playsinline preload="auto">
+    <source src="videos/skater_brags_on_Ripperz.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Playback rate controls
+    const storeVideo = document.querySelector(".store-bg");
+    const logoVid = document.querySelector("#logoVideo");
+    if (storeVideo) {
+      storeVideo.playbackRate = 0.5;
+      storeVideo.addEventListener("loadedmetadata", () => {
+        storeVideo.currentTime = 1; // Start 1 second in
+      });
+    }
+    if (logoVid) {
+      logoVid.playbackRate = 0.5;
+    }
+
+    // Pause tile videos on hover
+    document.querySelectorAll(".tile-video").forEach(video => {
+      video.addEventListener("mouseenter", () => video.pause());
+      video.addEventListener("mouseleave", () => video.play());
+    });
+
+    // Hamburger toggle
+const hamburger = document.getElementById("hamburger");
+const navMenu = document.getElementById("navMenu");
+
+if (hamburger && navMenu) {
+  hamburger.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+  });
+}
+
+// Animate h3s on scroll
+const headingObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll(".tile h3").forEach(h3 => {
+  headingObserver.observe(h3);
+});
+    // Scroll fade + scale effect
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove("inactive");
+        } else {
+          entry.target.classList.add("inactive");
+        }
+      });
+    }, {
+      threshold: 0.6
+    });
+
+    document.querySelectorAll(".tile-video").forEach(video => {
+      observer.observe(video);
+    });
+  });
+</script>
+  
+  <div class="store-overlay">
+    <h1>🔥 Welcome to the Ripperz Store 🔥</h1>
+    <p>Unleash style. Fuel rebellion. Shop the underground wave.</p>
+  </div>
+</section>
+  
+  <section class="tile-section">
     <div class="parallax-overlay">
       <div class="tile">
         <video class="tile-video" src="/videos/concept_01.mp4" autoplay muted loop playsinline></video>
@@ -187,19 +234,16 @@
       </div>
       <div class="tile">
         <video class="tile-video" src="/videos/concept_03.mp4" autoplay muted loop playsinline></video>
-        <div class="content">
+          <div class="content">
           <h3>Built on Passion</h3>
           <p>Born from youth, grit, and vision. RIPPERZ is a statement, a story, a style—crafted for those who don’t follow.</p>
         </div>
       </div>
     </div>
   </section>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const vid = document.getElementById('skaterVideo');
-      if (vid) vid.playbackRate = 0.5;
-    });
-  </script>
+  
+  <footer>
+    &copy; 2025 RIPPERZ. All rights reserved.
+  </footer>
 </body>
 </html>
