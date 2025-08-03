@@ -210,6 +210,7 @@ footer {
   transition: opacity 0.8s ease, transform 0.8s ease;
   opacity: 1;
   transform: scale(1);
+  display: block;
 }
 
 .tile-video.inactive {
