@@ -303,6 +303,54 @@ footer {
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
+@media (max-width: 768px) {
+  .tile {
+    flex-direction: column;
+  }
+
+  .tile-video,
+  .tile .content {
+    width: 100%;
+    max-height: none;
+  }
+
+  .tile-video {
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .tile .content {
+    padding: 1.5rem 1rem;
+    text-align: center;
+  }
+
+  .tile h3 {
+    font-size: 2rem;
+  }
+
+  .tile p {
+    font-size: 1.05rem;
+  }
+
+  .store-hero {
+    height: auto;
+    flex-direction: column;
+    padding: 2rem 1rem;
+  }
+
+  .store-overlay {
+    padding: 1.5rem;
+  }
+
+  .store-overlay h1 {
+    font-size: 2rem;
+  }
+
+  .store-overlay p {
+    font-size: 1.2rem;
+  }
+}
+
 .tile h3.visible {
   animation: fadeSlideUp 0.8s ease forwards;
 }
