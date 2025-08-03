@@ -196,11 +196,22 @@
     <source src="videos/Skater_Brags_About_Ripperz.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
-  <script>
+<script>
   document.addEventListener("DOMContentLoaded", () => {
-    const video = document.querySelector(".store-bg");
-    if (video) {
-      video.playbackRate = 0.5;
+    const storeVideo = document.querySelector(".store-bg");
+    const logoVid = document.querySelector("#logoVideo");
+
+    if (storeVideo) {
+      storeVideo.playbackRate = 0.5;
+
+      // Wait until video is ready to seek, then jump to 1s
+      storeVideo.addEventListener('loadedmetadata', () => {
+        storeVideo.currentTime = 1;
+      });
+    }
+
+    if (logoVid) {
+      logoVid.playbackRate = 0.5;
     }
   });
 </script>
