@@ -159,3 +159,45 @@ footer {
   background-color: var(--toxic-green);
   color: #000;
 }
+
+.store-hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.store-bg {
+  position: absolute;
+  top: -10%;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.store-overlay {
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 0.5rem;
+  backdrop-filter: blur(4px);
+}
+
+.store-overlay h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 8px black;
+}
+
+.store-overlay p {
+  font-size: 1.5rem;
+  text-shadow: 1px 1px 5px black;
+}
+
